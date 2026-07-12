@@ -1,0 +1,60 @@
+import 'package:flutter/material.dart';
+import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
+
+class LogoComponent extends SpriteComponent {
+  LogoComponent({
+    required Vector2 position,
+  }) : super(
+          position: position,
+          anchor: Anchor.center,
+          size: Vector2(230, 230),
+          scale: Vector2.all(0.70),
+        );
+
+  @override
+  Future<void> onLoad() async {
+    sprite = await Sprite.load('images/logo.png');
+
+    opacity = 0;
+
+    add(
+      OpacityEffect.to(
+        1,
+        EffectController(
+          duration: 1.2,
+        ),
+      ),
+    );
+
+    add(
+      ScaleEffect.to(
+        Vector2.all(1),
+        EffectController(
+          duration: 1.0,
+          curve: Curves.easeOutBack,
+        ),
+      ),
+    );
+
+    add(
+      SequenceEffect(
+        [
+          ScaleEffect.by(
+            Vector2.all(0.04),
+            EffectController(
+              duration: 1.0,
+            ),
+          ),
+          ScaleEffect.by(
+            Vector2.all(-0.04),
+            EffectController(
+              duration: 1.0,
+            ),
+          ),
+        ],
+        infinite: true,
+      ),
+    );
+  }
+}

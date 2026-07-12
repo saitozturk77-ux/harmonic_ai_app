@@ -1,0 +1,142 @@
+[
+  {
+    "signalId": 1001,
+    "pair": "EURUSD",
+    "category": "forex",
+    "timeframe": "15M",
+    "signal": "BUY",
+    "status": "live",
+    "confidence": 96.8,
+    "entry": 1.17452,
+    "stopLoss": 1.17210,
+    "takeProfit": 1.17980,
+    "riskReward": 2.3,
+    "spread": 0.2,
+    "atr": 0.0018,
+    "engine": "Neural AI",
+    "confirmations": [
+      "ema",
+      "macd",
+      "rsi",
+      "trend"
+    ],
+    "successRate": 93.7,
+    "createdAt": "2026-07-12T09:15:00Z"
+  },
+  {
+    "signalId": 1002,
+    "pair": "GBPUSD",
+    "category": "forex",
+    "timeframe": "15M",
+    "signal": "SELL",
+    "status": "live",
+    "confidence": 94.5,
+    "entry": 1.36280,
+    "stopLoss": 1.36590,
+    "takeProfit": 1.35620,
+    "riskReward": 2.1,
+    "spread": 0.3,
+    "atr": 0.0022,
+    "engine": "Neural AI",
+    "confirmations": [
+      "ema",
+      "macd",
+      "trend"
+    ],
+    "successRate": 91.4,
+    "createdAt": "2026-07-12T09:18:00Z"
+  },
+  {
+    "signalId": 1003,
+    "pair": "USDJPY",
+    "category": "forex",
+    "timeframe": "15M",
+    "signal": "WAIT",
+    "status": "waiting",
+    "confidence": 67.2,
+    "entry": 147.250,
+    "stopLoss": 146.950,
+    "takeProfit": 147.980,
+    "riskReward": 2.4,
+    "spread": 0.2,
+    "atr": 0.180,
+    "engine": "Trend Engine",
+    "confirmations": [
+      "ema",
+      "trend"
+    ],
+    "successRate": 89.6,
+    "createdAt": "2026-07-12T09:20:00Z"
+  },
+  {
+    "signalId": 1004,
+    "pair": "XAUUSD",
+    "category": "metals",
+    "timeframe": "15M",
+    "signal": "BUY",
+    "status": "live",
+    "confidence": 97.9,
+    "entry": 3384.50,
+    "stopLoss": 3376.00,
+    "takeProfit": 3402.80,
+    "riskReward": 2.5,
+    "spread": 1.8,
+    "atr": 8.7,
+    "engine": "Harmonic AI",
+    "confirmations": [
+      "harmonic",
+      "macd",
+      "trend",
+      "ai"
+    ],
+    "successRate": 95.6,
+    "createdAt": "2026-07-12T09:25:00Z"
+  },
+  {
+    "signalId": 1005,
+    "pair": "BTCUSD",
+    "category": "crypto",
+    "timeframe": "15M",
+    "signal": "SELL",
+    "status": "live",
+    "confidence": 92.6,
+    "entry": 118250,
+    "stopLoss": 119100,
+    "takeProfit": 116500,
+    "riskReward": 2.0,
+    "spread": 8.0,
+    "atr": 850,
+    "engine": "Neural AI",
+    "confirmations": [
+      "ema",
+      "macd",
+      "volume",
+      "ai"
+    ],
+    "successRate": 90.2,
+    "createdAt": "2026-07-12T09:28:00Z"
+  },
+  {
+    "signalId": 1006,
+    "pair": "NAS100",
+    "category": "indices",
+    "timeframe": "15M",
+    "signal": "BUY",
+    "status": "live",
+    "confidence": 93.4,
+    "entry": 24410,
+    "stopLoss": 24310,
+    "takeProfit": 24690,
+    "riskReward": 2.8,
+    "spread": 1.2,
+    "atr": 95,
+    "engine": "Trend Engine",
+    "confirmations": [
+      "trend",
+      "ema",
+      "ai"
+    ],
+    "successRate": 92.1,
+    "createdAt": "2026-07-12T09:30:00Z"
+  }
+]

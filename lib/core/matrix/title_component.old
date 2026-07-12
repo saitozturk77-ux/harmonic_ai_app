@@ -1,0 +1,109 @@
+import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
+import 'package:flutter/material.dart';
+
+class TitleComponent extends PositionComponent {
+  TitleComponent({
+    required Vector2 position,
+  }) : super(
+          position: position,
+          anchor: Anchor.topCenter,
+        );
+
+  @override
+  Future<void> onLoad() async {
+    await super.onLoad();
+
+    final title = TextComponent(
+      text: "FOREX MATRIX",
+      anchor: Anchor.topCenter,
+      textRenderer: TextPaint(
+        style: const TextStyle(
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+          color: Color(0xff00D4FF),
+          letterSpacing: 2,
+        ),
+      ),
+    );
+
+    final subtitle = TextComponent(
+      text: "AI Trading Intelligence",
+      position: Vector2(0, 42),
+      anchor: Anchor.topCenter,
+      textRenderer: TextPaint(
+        style: const TextStyle(
+          fontSize: 14,
+          color: Color(0xffB8C4D8),
+          letterSpacing: 1.2,
+        ),
+      ),
+    );
+
+    title.opacity = 0;
+    subtitle.opacity = 0;
+
+    add(title);
+    add(subtitle);
+
+    // Başlık Fade
+    title.add(
+      OpacityEffect.to(
+        1,
+        EffectController(
+          duration: 1.2,
+        ),
+      ),
+    );
+
+    // Başlık Yukarı Kayma
+    title.add(
+      MoveByEffect(
+        Vector2(0, -8),
+        EffectController(
+          duration: 1.2,
+          curve: Curves.easeOut,
+        ),
+      ),
+    );
+
+    // Alt Başlık Gecikmeli Fade
+    subtitle.add(
+      OpacityEffect.to(
+        1,
+        EffectController(
+          duration: 1.0,
+          startDelay: 0.7,
+        ),
+      ),
+    );
+
+    subtitle.add(
+      MoveByEffect(
+        Vector2(0, -5),
+        EffectController(
+          duration: 1.0,
+          startDelay: 0.7,
+          curve: Curves.easeOut,
+        ),
+      ),
+    );
+
+    // Hafif nefes alma efekti
+    add(
+      SequenceEffect(
+        [
+          ScaleEffect.to(
+            Vector2.all(1.02),
+            EffectController(duration: 1.5),
+          ),
+          ScaleEffect.to(
+            Vector2.all(1.00),
+            EffectController(duration: 1.5),
+          ),
+        ],
+        infinite: true,
+      ),
+    );
+  }
+}
