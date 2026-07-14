@@ -1,9 +1,9 @@
+import 'widgets/trade_levels_detail_card.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/models/signal_view_model.dart';
 import '../../theme/app_colors.dart';
 import 'widgets/detail_header.dart';
-import 'widgets/trade_levels_card.dart';
 import 'widgets/ai_confidence_card.dart';
 import 'widgets/ai_analysis_card.dart';
 import 'widgets/ai_summary_card.dart';
@@ -55,7 +55,11 @@ class SignalDetailScreen extends StatelessWidget {
             // TRADE LEVELS
             //--------------------------------------------------
 
-            TradeLevelsCard(
+            // TradeLevelsCard(
+            //   viewModel: viewModel,
+            // ),
+
+            TradeLevelsDetailCard(
               viewModel: viewModel,
             ),
 
