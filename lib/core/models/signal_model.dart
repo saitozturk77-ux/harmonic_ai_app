@@ -66,6 +66,18 @@ class SignalModel {
 
   final double takeProfit;
 
+  final double tp2;
+
+  final double tp3;
+
+  final bool tp1Hit;
+
+  final bool tp2Hit;
+
+  final bool tp3Hit;
+
+  final bool stopLossHit;
+
   final double riskReward;
 
   final double spread;
@@ -99,7 +111,16 @@ class SignalModel {
     required this.entry,
     required this.stopLoss,
     required this.takeProfit,
+
+    required this.tp2,
+    required this.tp3,
+
     required this.riskReward,
+
+    required this.tp1Hit,
+    required this.tp2Hit,
+    required this.tp3Hit,
+    required this.stopLossHit,
     required this.spread,
     required this.atr,
     required this.engine,
@@ -114,6 +135,12 @@ class SignalModel {
 
   SignalModel copyWith({
     SignalStatus? status,
+    double? tp2,
+    double? tp3,
+    bool? tp1Hit,
+    bool? tp2Hit,
+    bool? tp3Hit,
+    bool? stopLossHit,
   }) {
     return SignalModel(
       signalId: signalId,
@@ -126,7 +153,17 @@ class SignalModel {
       entry: entry,
       stopLoss: stopLoss,
       takeProfit: takeProfit,
+
+      tp2: tp2 ?? this.tp2,
+      tp3: tp3 ?? this.tp3,
+
       riskReward: riskReward,
+
+      tp1Hit: tp1Hit ?? this.tp1Hit,
+      tp2Hit: tp2Hit ?? this.tp2Hit,
+      tp3Hit: tp3Hit ?? this.tp3Hit,
+      stopLossHit: stopLossHit ?? this.stopLossHit,
+
       spread: spread,
       atr: atr,
       engine: engine,
@@ -282,7 +319,21 @@ class SignalModel {
 
       takeProfit: (json["takeProfit"] as num).toDouble(),
 
+      tp2: (json["tp2"] as num?)?.toDouble() ??
+          (json["takeProfit"] as num).toDouble(),
+
+      tp3: (json["tp3"] as num?)?.toDouble() ??
+          (json["takeProfit"] as num).toDouble(),
+
       riskReward: (json["riskReward"] as num).toDouble(),
+
+      tp1Hit: json["tp1Hit"] as bool? ?? false,
+
+      tp2Hit: json["tp2Hit"] as bool? ?? false,
+
+      tp3Hit: json["tp3Hit"] as bool? ?? false,
+
+      stopLossHit: json["stopLossHit"] as bool? ?? false,
 
       spread: (json["spread"] as num).toDouble(),
 
@@ -317,7 +368,20 @@ class SignalModel {
       "entry": entry,
       "stopLoss": stopLoss,
       "takeProfit": takeProfit,
+
+      "tp2": tp2,
+
+      "tp3": tp3,
+
       "riskReward": riskReward,
+
+      "tp1Hit": tp1Hit,
+
+      "tp2Hit": tp2Hit,
+
+      "tp3Hit": tp3Hit,
+
+      "stopLossHit": stopLossHit,
       "spread": spread,
       "atr": atr,
       "engine": engine,
