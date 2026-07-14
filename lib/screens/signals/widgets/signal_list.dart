@@ -4,6 +4,7 @@ import '../../../core/models/signal_view_model.dart';
 import '../../../core/models/user_subscription.dart';
 import '../../../core/models/signal_model.dart';
 import '../../../core/repository/repository_provider.dart';
+import '../../signal_detail/signal_detail_screen.dart';
 
 import 'signal_card.dart';
 
@@ -159,11 +160,38 @@ class _SignalListState extends State<SignalList> {
             itemBuilder: (context, index) {
               final signal = signals[index];
                             return Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: SignalCard(
-                  viewModel: signal,
-                ),
-              );
+                              padding: const EdgeInsets.only(bottom: 12),
+                              child: Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(22),
+                                  onTap: () {
+                                    if (signal.locked) {
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                            'This signal is available only for Premium members.',
+                                          ),
+                                        ),
+                                      );
+                                      return;
+                                    }
+
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) => SignalDetailScreen(
+                                          viewModel: signal,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: SignalCard(
+                                    viewModel: signal,
+                                  ),
+                                ),
+                              ),
+                            );
             },
           ),
         );
