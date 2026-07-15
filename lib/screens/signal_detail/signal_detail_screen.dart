@@ -141,7 +141,96 @@ class SignalDetailScreen extends StatefulWidget {
 
                 setState(() {});
               },
-              onShare: () {},
+              onShare: () {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        title: Row(
+          children: const [
+            Icon(
+              Icons.lock,
+              color: Colors.amber,
+            ),
+            SizedBox(width: 8),
+            Text("Premium Feature"),
+          ],
+        ),
+        content: const Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Signal sharing is available only for Premium members.",
+            ),
+            SizedBox(height: 16),
+            Row(
+              children: [
+                Icon(Icons.check_circle,
+                    color: Colors.green, size: 18),
+                SizedBox(width: 8),
+                Text("Unlimited AI Signals"),
+              ],
+            ),
+            SizedBox(height: 8),
+            Row(
+              children: [
+                Icon(Icons.check_circle,
+                    color: Colors.green, size: 18),
+                SizedBox(width: 8),
+                Text("Share Trading Signals"),
+              ],
+            ),
+            SizedBox(height: 8),
+            Row(
+              children: [
+                Icon(Icons.check_circle,
+                    color: Colors.green, size: 18),
+                SizedBox(width: 8),
+                Text("Advanced AI Engines"),
+              ],
+            ),
+            SizedBox(height: 8),
+            Row(
+              children: [
+                Icon(Icons.check_circle,
+                    color: Colors.green, size: 18),
+                SizedBox(width: 8),
+                Text("Instant Notifications"),
+              ],
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("Maybe Later"),
+          ),
+          FilledButton.icon(
+            onPressed: () {
+              Navigator.pop(context);
+
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text(
+                    "Premium subscription page will be available soon.",
+                  ),
+                ),
+              );
+            },
+            icon: const Icon(Icons.workspace_premium),
+            label: const Text("Upgrade"),
+          ),
+        ],
+      );
+    },
+  );
+},
             ),
 
             const SizedBox(height: 16),
