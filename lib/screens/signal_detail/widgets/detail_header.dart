@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/models/signal_view_model.dart';
 import '../../../theme/app_colors.dart';
+import '../../../core/favorites/favorite_manager.dart';
 
 class DetailHeader extends StatelessWidget {
   const DetailHeader({
@@ -75,21 +76,12 @@ class DetailHeader extends StatelessWidget {
                 ),
               ),
 
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.notifications_outlined,
-                  color: Colors.amber,
-                ),
-              ),
-
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.star_border,
-                  color: Colors.orange,
-                ),
-              ),
+              Icon(
+                FavoriteManager.isFavorite(signal.signalId)
+                    ? Icons.star
+                    : Icons.star_border,
+                color: Colors.orange,
+              )
             ],
           ),
 
