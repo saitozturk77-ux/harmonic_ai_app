@@ -16,8 +16,8 @@ class AppDrawer extends StatelessWidget {
             Center(
               child: Image.asset(
                 'assets/images/logo.png',
-                width: 90,
-                height: 90,
+                width: 72,
+                height: 72,
                 fit: BoxFit.contain,
               ),
             ),
@@ -69,13 +69,13 @@ class AppDrawer extends StatelessWidget {
                   vertical: 5,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.orange.withValues(alpha: 0.15),
+                  color: const Color(0xFF00BCD4).withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: const Text(
                   "FREE PLAN",
                   style: TextStyle(
-                    color: Colors.orange,
+                    color: const Color(0xFF00E5FF),
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
                   ),
@@ -86,10 +86,22 @@ class AppDrawer extends StatelessWidget {
             const SizedBox(height: 20),
 
             const Divider(),
-                        _item(
-              context,
-              Icons.dashboard_outlined,
-              "Dashboard",
+
+            const Padding(
+              padding: EdgeInsets.only(
+                left: 18,
+                top: 8,
+                bottom: 4,
+              ),
+              child: Text(
+                "TRADING",
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.3,
+                  fontSize: 11,
+                ),
+              ),
             ),
 
             _item(
@@ -111,6 +123,23 @@ class AppDrawer extends StatelessWidget {
             ),
 
             const Divider(),
+
+            const Padding(
+              padding: EdgeInsets.only(
+                left: 18,
+                top: 6,
+                bottom: 4,
+              ),
+              child: Text(
+                "MEMBERSHIP",
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.3,
+                  fontSize: 11,
+                ),
+              ),
+            ),
 
             Padding(
               padding: const EdgeInsets.symmetric(
@@ -169,7 +198,7 @@ class AppDrawer extends StatelessWidget {
                             SizedBox(height: 4),
 
                             Text(
-                              "Unlock AI Trading Features",
+                              "Gold • Silver • Crypto • AI Engines",
                               style: TextStyle(
                                 color: Colors.white70,
                                 fontSize: 12,
@@ -191,6 +220,23 @@ class AppDrawer extends StatelessWidget {
             ),
 
             const Divider(),
+
+            const Padding(
+              padding: EdgeInsets.only(
+                left: 18,
+                top: 8,
+                bottom: 4,
+              ),
+              child: Text(
+                "SUPPORT",
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.3,
+                  fontSize: 11,
+                ),
+              ),
+            ),
 
             _item(
               context,
