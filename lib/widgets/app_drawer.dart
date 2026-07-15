@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/premium/premium_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -151,11 +152,10 @@ class AppDrawer extends StatelessWidget {
                 onTap: () {
                   Navigator.pop(context);
 
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(
-                        "Premium page coming soon...",
-                      ),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const PremiumScreen(),
                     ),
                   );
                 },
