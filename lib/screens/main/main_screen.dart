@@ -5,6 +5,7 @@ import '../signals/signals_screen.dart';
 import '../scanner/scanner_screen.dart';
 import '../ai/ai_screen.dart';
 import '../settings/settings_screen.dart';
+import '../../widgets/app_drawer.dart';
 
 import '../home/widgets/bottom_navigation.dart';
 
@@ -44,6 +45,14 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      appBar: AppBar(
+        elevation: 0,
+        title: const SizedBox.shrink(),
+        centerTitle: false,
+      ),
+
+      drawer: const AppDrawer(),
 
       body: IndexedStack(
         index: _currentIndex,
