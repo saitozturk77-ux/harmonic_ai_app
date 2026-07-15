@@ -111,7 +111,7 @@
     "createdAt": "2026-07-12T09:25:00Z",
     "tp2": 3415.2,
     "tp3": 3427.8,
-    "tp1Hit": false,
+    "tp1Hit": true,
     "tp2Hit": false,
     "tp3Hit": false,
     "stopLossHit": false

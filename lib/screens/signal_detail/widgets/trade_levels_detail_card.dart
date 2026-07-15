@@ -61,8 +61,12 @@ class TradeLevelsDetailCard extends StatelessWidget {
 
           const SizedBox(height: 20),
 
-          const Divider(
-            color: AppColors.border,
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Divider(
+              color: AppColors.border,
+              height: 1,
+            ),
           ),
 
           const SizedBox(height: 20),
@@ -76,10 +80,36 @@ class TradeLevelsDetailCard extends StatelessWidget {
             hit: signal.tp1Hit,
           ),
 
+          const SizedBox(height: 10),
+
+          _TargetRow(
+            title: "TP2",
+            value: _formatPrice(
+              signal.pair,
+              signal.tp2,
+            ),
+            hit: signal.tp2Hit,
+          ),
+
+          const SizedBox(height: 10),
+
+          _TargetRow(
+            title: "TP3",
+            value: _formatPrice(
+              signal.pair,
+              signal.tp3,
+            ),
+            hit: signal.tp3Hit,
+          ),
+
           const SizedBox(height: 20),
 
-          const Divider(
-            color: AppColors.border,
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Divider(
+              color: AppColors.border,
+              height: 1,
+            ),
           ),
 
           const SizedBox(height: 20),

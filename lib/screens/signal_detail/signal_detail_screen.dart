@@ -1,3 +1,4 @@
+import '../../core/favorites/favorite_manager.dart';
 import 'widgets/trade_levels_detail_card.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ import 'widgets/market_status_card.dart';
 import 'widgets/alert_card.dart';
 import 'widgets/favorite_share_card.dart';
 
-class SignalDetailScreen extends StatelessWidget {
+class SignalDetailScreen extends StatefulWidget {
   const SignalDetailScreen({
     super.key,
     required this.viewModel,
@@ -19,9 +20,17 @@ class SignalDetailScreen extends StatelessWidget {
 
   final SignalViewModel viewModel;
 
+ @override
+ State<SignalDetailScreen> createState() =>
+     _SignalDetailScreenState();
+ }
+
+ class _SignalDetailScreenState
+     extends State<SignalDetailScreen> {
+
   @override
   Widget build(BuildContext context) {
-    final signal = viewModel.signal;
+    final signal = widget.viewModel.signal;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -46,7 +55,7 @@ class SignalDetailScreen extends StatelessWidget {
             //--------------------------------------------------
 
             DetailHeader(
-              viewModel: viewModel,
+              viewModel: widget.viewModel,
             ),
 
             const SizedBox(height: 16),
@@ -56,11 +65,11 @@ class SignalDetailScreen extends StatelessWidget {
             //--------------------------------------------------
 
             // TradeLevelsCard(
-            //   viewModel: viewModel,
+            //   viewModel: widget.viewModel,
             // ),
 
             TradeLevelsDetailCard(
-              viewModel: viewModel,
+              viewModel: widget.viewModel,
             ),
 
             const SizedBox(height: 16),
@@ -70,7 +79,7 @@ class SignalDetailScreen extends StatelessWidget {
             //--------------------------------------------------
 
             AIConfidenceCard(
-              viewModel: viewModel,
+              viewModel: widget.viewModel,
             ),
 
             const SizedBox(height: 16),
@@ -80,7 +89,7 @@ class SignalDetailScreen extends StatelessWidget {
             //--------------------------------------------------
 
             AIAnalysisCard(
-              viewModel: viewModel,
+              viewModel: widget.viewModel,
             ),
 
             const SizedBox(height: 16),
@@ -116,8 +125,22 @@ class SignalDetailScreen extends StatelessWidget {
             //--------------------------------------------------
 
             FavoriteShareCard(
-              isFavorite: false,
-              onFavorite: () {},
+              isFavorite: FavoriteManager.isFavorite(signal.signalId),
+              onFavorite: () {
+                final newState = FavoriteManager.toggle(signal.signalId);
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      newState
+                          ? "⭐ Added to Favorites"
+                          : "☆ Removed from Favorites",
+                    ),
+                  ),
+                );
+
+                setState(() {});
+              },
               onShare: () {},
             ),
 

@@ -4,21 +4,24 @@ import '../../../core/models/signal_view_model.dart';
 import '../../../core/models/user_subscription.dart';
 import '../../../core/models/signal_model.dart';
 import '../../../core/repository/repository_provider.dart';
+import '../../../core/favorites/favorite_manager.dart';
 import '../../signal_detail/signal_detail_screen.dart';
 
 import 'signal_card.dart';
 
 class SignalList extends StatefulWidget {
-  const SignalList({
+   const SignalList({
     super.key,
     required this.subscription,
     this.search = '',
     this.category,
+    this.favoritesOnly = false,
   });
 
   final UserSubscription subscription;
   final String search;
   final MarketCategory? category;
+  final bool favoritesOnly;
 
   @override
   State<SignalList> createState() => _SignalListState();
@@ -39,7 +42,8 @@ class _SignalListState extends State<SignalList> {
 
     if (oldWidget.search != widget.search ||
         oldWidget.subscription != widget.subscription ||
-        oldWidget.category != widget.category) {
+        oldWidget.category != widget.category ||
+        oldWidget.favoritesOnly != widget.favoritesOnly) {
       _loadSignals();
     }
   }
@@ -112,7 +116,19 @@ class _SignalListState extends State<SignalList> {
           );
         }
 
-        final signals = snapshot.data ?? [];
+        List<SignalViewModel> signals = List.from(
+          snapshot.data ?? [],
+        );
+
+        if (widget.favoritesOnly) {
+          final favoriteIds = FavoriteManager.getAll();
+
+          signals = signals.where((item) {
+            return favoriteIds.contains(
+              item.signal.signalId,
+            );
+          }).toList();
+        }
 
         //----------------------------------------------------
         // EMPTY
