@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_shadows.dart';
+import '../../../shared/widgets/glass_card.dart';
+
 class SubscriptionCards extends StatefulWidget {
   const SubscriptionCards({super.key});
 
@@ -8,16 +12,13 @@ class SubscriptionCards extends StatefulWidget {
 }
 
 class _SubscriptionCardsState extends State<SubscriptionCards> {
-
   int selectedPlan = 1;
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
         const Text(
           "Choose Your Plan",
           style: TextStyle(
@@ -44,7 +45,6 @@ class _SubscriptionCardsState extends State<SubscriptionCards> {
           subtitle: "Save up to 35%",
           badge: "BEST VALUE",
         ),
-
       ],
     );
   }
@@ -55,141 +55,69 @@ class _SubscriptionCardsState extends State<SubscriptionCards> {
     required String subtitle,
     required String badge,
   }) {
-
-    final bool selected = selectedPlan == index;
+    final selected = selectedPlan == index;
 
     return GestureDetector(
-
       onTap: () {
-
         setState(() {
-
           selectedPlan = index;
-
         });
-
       },
-
-      child: AnimatedContainer(
-
+      child: AnimatedScale(
+        scale: selected ? 1.03 : 1.0,
         duration: const Duration(milliseconds: 250),
-
-        padding: const EdgeInsets.all(18),
-
-        decoration: BoxDecoration(
-
-          color: selected
-              ? const Color(0xFF00BCD4).withValues(alpha: 0.12)
-              : const Color(0xFF111C28),
-
-          borderRadius: BorderRadius.circular(18),
-
-          border: Border.all(
-
-            color: selected
-                ? const Color(0xFF00E5FF)
-                : Colors.white10,
-
-            width: selected ? 2 : 1,
-
-          ),
-
-        ),
-
-        child: Row(
-
-          children: [
-
-            Expanded(
-
-              child: Column(
-
-                crossAxisAlignment: CrossAxisAlignment.start,
-
-                children: [
-
-                  Text(
-
-                    title,
-
+        child: GlassCard(
+          premium: selected,
+          padding: const EdgeInsets.all(18),
+          borderColor: selected ? AppColors.gold : Colors.white24,
+          boxShadow: selected ? AppShadows.premium : AppShadows.glow,
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      subtitle,
+                      style: const TextStyle(
+                        color: Colors.white70,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              if (badge.isNotEmpty)
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.gold,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    badge,
                     style: const TextStyle(
-
-                      color: Colors.white,
-
-                      fontSize: 20,
-
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
-
+                      fontSize: 11,
                     ),
-
                   ),
-
-                  const SizedBox(height: 4),
-
-                  Text(
-
-                    subtitle,
-
-                    style: const TextStyle(
-
-                      color: Colors.white70,
-
-                    ),
-
-                  ),
-
-                ],
-
-              ),
-
-            ),
-
-            if (badge.isNotEmpty)
-
-              Container(
-
-                padding: const EdgeInsets.symmetric(
-
-                  horizontal: 12,
-
-                  vertical: 6,
-
                 ),
-
-                decoration: BoxDecoration(
-
-                  color: Colors.orange,
-
-                  borderRadius: BorderRadius.circular(20),
-
-                ),
-
-                child: Text(
-
-                  badge,
-
-                  style: const TextStyle(
-
-                    color: Colors.black,
-
-                    fontWeight: FontWeight.bold,
-
-                    fontSize: 11,
-
-                  ),
-
-                ),
-
-              ),
-
-          ],
-
+            ],
+          ),
         ),
-
       ),
-
     );
-
   }
-
 }

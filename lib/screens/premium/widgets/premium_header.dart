@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_shadows.dart';
+
 class PremiumHeader extends StatelessWidget {
   const PremiumHeader({super.key});
 
@@ -7,65 +10,77 @@ class PremiumHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-
         Hero(
           tag: "premium_logo",
-          child: Image.asset(
-            "assets/images/logo.png",
-            width: 90,
-            height: 90,
+          child: Container(
+            width: 120,
+            height: 120,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: AppShadows.glow,
+            ),
+            child: ClipOval(
+              child: Image.asset(
+                "assets/images/logo.png",
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
         ),
 
-        const SizedBox(height: 20),
+        const SizedBox(height: 24),
 
         const Text(
           "FOREX MATRIX",
           style: TextStyle(
             color: Colors.white,
-            fontSize: 30,
+            fontSize: 32,
             fontWeight: FontWeight.bold,
-            letterSpacing: 1.4,
+            letterSpacing: 1.5,
           ),
         ),
 
-        const SizedBox(height: 6),
+        const SizedBox(height: 8),
 
         const Text(
           "PREMIUM",
           style: TextStyle(
-            color: Color(0xFFFFC107),
-            fontSize: 28,
+            color: AppColors.gold,
+            fontSize: 30,
             fontWeight: FontWeight.bold,
-            letterSpacing: 6,
+            letterSpacing: 8,
+          ),
+        ),
+
+        const SizedBox(height: 18),
+
+        const Text(
+          "Unlock the Full Power\nof AI Trading",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            height: 1.4,
           ),
         ),
 
         const SizedBox(height: 14),
 
         const Text(
-          "Unlock the Full Power\nof AI Trading",
+          "• Real-time AI Signals\n"
+          "• Advanced Market Analysis\n"
+          "• Harmonic & Candlestick AI\n"
+          "• Unlimited Premium Alerts",
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white70,
-            fontSize: 17,
-            height: 1.4,
+            fontSize: 14,
+            height: 1.7,
           ),
         ),
 
-        const SizedBox(height: 10),
-
-        const Text(
-          "Real-time AI signals\nAdvanced market analysis\nPremium trading tools",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white54,
-            fontSize: 13,
-            height: 1.6,
-          ),
-        ),
-
-        const SizedBox(height: 30),
+        const SizedBox(height: 32),
       ],
     );
   }

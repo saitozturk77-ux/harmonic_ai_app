@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../shared/widgets/glass_card.dart';
 
 class StatsGrid extends StatelessWidget {
   const StatsGrid({super.key});
@@ -62,22 +63,8 @@ class _StatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GlassCard(
       height: 110,
-      decoration: BoxDecoration(
-        color: const Color(0xFF111C28),
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(
-          color: const Color(0xFF00BCD4).withValues(alpha: 0.25),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0xFF00BCD4).withValues(alpha: 0.10),
-            blurRadius: 18,
-            spreadRadius: 1,
-          ),
-        ],
-      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

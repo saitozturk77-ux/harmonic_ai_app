@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/app_gradients.dart';
+import 'widgets/comparison_table.dart';
+import 'widgets/premium_button.dart';
 import 'widgets/premium_header.dart';
 import 'widgets/stats_grid.dart';
-import 'widgets/comparison_table.dart';
 import 'widgets/subscription_cards.dart';
-import 'widgets/premium_button.dart';
 
 class PremiumScreen extends StatelessWidget {
   const PremiumScreen({super.key});
@@ -12,28 +13,53 @@ class PremiumScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF050B12),
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF050B12),
-        foregroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
+        scrolledUnderElevation: 0,
         centerTitle: true,
-        title: const Text("Forex Matrix Premium"),
+        foregroundColor: Colors.white,
+        title: const Text(
+          "Forex Matrix Premium",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            letterSpacing: 0.6,
+          ),
+        ),
       ),
-      body: const SafeArea(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(20, 10, 20, 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              PremiumHeader(),
-              StatsGrid(),
-              ComparisonTable(),
-              SizedBox(height: 28),
-              SubscriptionCards(),
-              SizedBox(height: 28),
-              PremiumButton(),
-            ],
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: AppGradients.background,
+        ),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.fromLTRB(20, 12, 20, 40),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: const [
+                PremiumHeader(),
+
+                SizedBox(height: 12),
+
+                StatsGrid(),
+
+                SizedBox(height: 28),
+
+                ComparisonTable(),
+
+                SizedBox(height: 32),
+
+                SubscriptionCards(),
+
+                SizedBox(height: 32),
+
+                PremiumButton(),
+
+                SizedBox(height: 20),
+              ],
+            ),
           ),
         ),
       ),

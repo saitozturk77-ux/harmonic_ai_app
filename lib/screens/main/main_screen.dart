@@ -5,7 +5,7 @@ import '../signals/signals_screen.dart';
 import '../scanner/scanner_screen.dart';
 import '../ai/ai_screen.dart';
 import '../settings/settings_screen.dart';
-import '../../widgets/app_drawer.dart';
+import '../../widgets/drawer/app_drawer.dart';
 
 import '../home/widgets/bottom_navigation.dart';
 
